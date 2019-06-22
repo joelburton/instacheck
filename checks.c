@@ -9,9 +9,15 @@
  *   err(str)  - to print string like an error
  *   warn(str) - to print string like a warning
  *
- *   cmdMatch(shellCommand, regex) - return true if command output matches regex
- *   envMatch(envName, regex) - return true if $envName matches regex
+ *   cmdMatch(shellCommand, regex) - does first line of cmd match regex?
+ *   envMatch(envName, regex) - does $envvar match regex?
  *
+ * When writing these regexes, they match part of a string --- to match
+ * exact string, use '^' and '$':
+ *
+ *   regex="yes" matches line="yes" but also "eyes", "yesss", and "eyesss"
+ *   regex="^yes$" matches line="yes" and nothing else
+ *  
  * This function should return true/false for good-installation-or-not.
  *
  */
@@ -105,7 +111,6 @@ bool doChecks() {
     }
 
     // git setup
-
 
     if (!cmdMatch("grep gitignore_global ~/.gitconfig", "gitignore_global"))
         err(".gitconfig is not set up with our commands");
