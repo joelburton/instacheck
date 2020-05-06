@@ -58,7 +58,7 @@ bool doChecks() {
         ok = false;
     }
 
-    if (!cmdMatch("node -v", "^v10.")) {
+    if (!cmdMatch("node -v", "^v12.")) {
         err("Wrong node version");
         ok = false;
     }
@@ -70,7 +70,7 @@ bool doChecks() {
         ok = false;
     }
 
-    if (!cmdMatch("psql -V", "^psql .* 11\\.")) {
+    if (!cmdMatch("psql -V", "^psql .* 12\\.")) {
         err("Wrong PostgreSQL version");
         ok = false;
     }

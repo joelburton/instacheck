@@ -1,3 +1,5 @@
+"""Confirm Rithm setup instruction was successful."""
+
 import sys
 import os
 import re
@@ -43,7 +45,6 @@ def do_checks():
         err("NPM not installed properly")
         ok = False
     
-
     if not cmd_match(
         "node -v", 
         "^v12."):
@@ -115,7 +116,8 @@ def do_checks():
 
     return ok
 
-### HERE BE DRAGONS
+
+### HERE BE DRAGONS --- SHOULDN'T NEED TO CHANGE THIS STUFF
 
 verbose = False
 
@@ -174,7 +176,7 @@ def main():
     Congratulations! Please send us the following line:
 """)
 
-
+    # signature
     username = os.environ["USER"]
     sig = subprocess.check_output(
         "echo '%s' | shasum" % username, shell=True)
