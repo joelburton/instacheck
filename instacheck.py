@@ -7,7 +7,7 @@ import subprocess
 
 def do_checks():
     ok = True
-    
+
     # xcode
 
     if not cmd_match(
@@ -168,8 +168,9 @@ def main():
         print("""
 *** YOU HAVE ERRORS:
     Check installation instructions carefully and follow every step.
-    Need help? Run again as 'python instacheck -v' and submit that output. 
-""")
+    Need help? Run again as '/usr/bin/python %s -v' 
+    and submit that output. 
+""" % sys.argv[0])
         sys.exit(1)
 
     print("""
