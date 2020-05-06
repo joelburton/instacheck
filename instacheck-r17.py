@@ -142,7 +142,7 @@ def cmd_match(cmd, pattern):
                 .decode('utf8'))
     except subprocess.CalledProcessError as err:
         if verbose:
-            print("  cmderr =", err)
+            print("  cmderr = %s" % err)
     else: 
         return regex_match(pattern, rez)
 
@@ -155,7 +155,7 @@ def file_match(path, pattern):
             return regex_match(pattern, f.read())
     except Exception as err:
         if verbose:
-            print("  fileerr =", err)
+            print("  fileerr = %s" % err)
 
 def main():
     global verbose
