@@ -172,14 +172,16 @@ def main():
         sys.exit(1)
 
     print("""
-*** EVERY CHECK SUCCESSFUL
+*** EVERY CHECK SUCCESSFUL:
     Congratulations! Please send us the following line:
 """)
 
     # signature
     username = os.environ["USER"]
-    sig = subprocess.check_output(
-        "echo '%s' | shasum" % username, shell=True)
+    sig = (subprocess
+            .check_output( "echo '%s' | shasum" % username, shell=True)
+            .strip()
+            .decode('utf8'))
     print("  %s = %s\n" % (username, sig))
 
 
