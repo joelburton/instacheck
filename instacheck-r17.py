@@ -6,6 +6,7 @@ import re
 import subprocess
 
 def do_checks():
+    ok = True
     
     # xcode
 
@@ -147,7 +148,7 @@ def cmd_match(cmd, pattern):
         return regex_match(pattern, rez)
 
 def env_match(envname, pattern):
-    return regex_match(pattern, os.environ.get(envname, ""))
+    return regex_match(pattern, os.environ.get(envname, "<unset>"))
 
 def file_match(path, pattern):
     try:
