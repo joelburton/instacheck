@@ -274,8 +274,8 @@ def main():
 
     verbose = len(sys.argv) > 1 and sys.argv[1] == "-v"
 
-    # for chk in MACOS:
-    for chk in LINUX:
+    for chk in MACOS:
+    # for chk in LINUX:
         chk()
 
     if not ok:
