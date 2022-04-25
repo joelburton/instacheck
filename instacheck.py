@@ -4,7 +4,7 @@ import sys
 import os
 import re
 import subprocess
-
+from hashlib import sha256
 
 def chk_xcode():
     cmd_match(
@@ -292,10 +292,7 @@ def main():
 """)
 
     username = os.environ["USER"]
-    sig = (subprocess
-           .check_output("echo '%s' | shasum" % username, shell=True)
-           .strip()
-           .decode('utf8'))
+    sig = sha256(username.encode('utf8')).hexdigest()
     print("  %s = %s\n" % (username, sig))
 
 
