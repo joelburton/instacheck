@@ -4,6 +4,7 @@ import sys
 import os
 import re
 import subprocess
+import zipfile
 from hashlib import sha256
 
 def chk_xcode():
@@ -282,18 +283,20 @@ def main():
 *** YOU HAVE ERRORS:
     Check installation instructions carefully and follow every step.
     Need help? Run again as '/usr/bin/python %s -v' 
-    and submit that output. 
+    and send us that output if you need help. 
 """ % sys.argv[0])
         sys.exit(1)
 
     print("""
 *** EVERY CHECK SUCCESSFUL:
-    Congratulations! Please send us the following line:
+    Congratulations! Please submit the following file: install-info.zip
 """)
 
     username = os.environ["USER"]
     sig = sha256(username.encode('utf8')).hexdigest()
-    print("  %s = %s\n" % (username, sig))
+    z = zipfile.ZipFile("install-info.zip", "w")
+    z.writestr("install-info.txt", f"{username} = {sig}\n")
+    z.close()
 
 
 if __name__ == "__main__":
