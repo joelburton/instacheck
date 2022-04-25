@@ -134,7 +134,7 @@ MACOS = [
 def chk_ubuntu():
     cmd_match(
         "lsb_release",
-        "Distributor ID: Ubuntu",
+        r"Distributor ID:\sUbuntu",
         "Ubuntu apparently not installed")
 
 
