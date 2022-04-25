@@ -215,7 +215,7 @@ LINUX = [
 # === HERE BE DRAGONS --- SHOULDN'T NEED TO CHANGE THIS STUFF
 
 verbose = False
-ok = False
+ok = True
 
 
 def err(msg, also=""):
@@ -291,7 +291,6 @@ def main():
     Congratulations! Please send us the following line:
 """)
 
-    # signature
     username = os.environ["USER"]
     sig = (subprocess
            .check_output("echo '%s' | shasum" % username, shell=True)
